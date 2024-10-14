@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <title>Список категорій</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Список категорій</h1>
+
+<form th:action="@{/categories}" method="get">
+  <div>
+    <input type="text" id="searchValue" name="searchValue"
+           placeholder="Пошук..."
+           th:value="${param.searchValue}"/>
+
+    <select id="sortBy" name="sortBy">
+      <option th:value="id" th:selected="${param.sortBy == 'id'}">ID</option>
+      <option th:value="name" th:selected="${param.sortBy == 'name'}">Назва</option>
+    </select>
+    <select id="orderBy" name="orderBy">
+      <option th:value="asc" th:selected="${param.orderBy == 'ASC'}">Зростання</option>
+      <option th:value="desc" th:selected="${param.orderBy == 'DESC'}">Спадання</option>
+    </select>
+
+    <button type="submit">Пошук</button>
+  </div>
+</form>
+
+<div th:if="${categories.isEmpty()}">Категорій не знайдено...</div>
+
+<ul>
+  <li th:each="category : ${categories}">
+    <a th:href="@{/products(categoryId=${category.getId()})}"
+       th:text=" '['+ (${category.getId()}) +'] ' + (${category.getName()})"></a>
+  </li>
+</ul>
+
+<div class="pagination">
+  <a th:href="@{/categories(page=${currentPage - 1})}" th:if="${currentPage > 0}">Попередня</a>
+  <span th:text="${currentPage + 1}"></span> / <span th:text="${totalPages}"></span>
+  <a th:href="@{/categories(page=${currentPage + 1})}" th:if="${currentPage + 1 < totalPages}">Наступна</a>
+</div>
+</body>
+</html>

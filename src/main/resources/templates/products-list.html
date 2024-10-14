@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8">
+  <title>Список продуктів</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Список продуктів</h1>
+<div style="margin-bottom: 10px">
+  <a th:href="@{/categories}">Спосок категорій</a>
+</div>
+
+<form th:action="@{/products}" method="get">
+  <div>
+    <input type="text" id="searchValue" name="searchValue"
+           placeholder="Пошук..."
+           th:value="${param.searchValue}"/>
+
+    <select id="categoryId" name="categoryId">
+      <option value="" th:selected="${param.categoryId == null}">Виберіть категорію</option>
+      <option th:each="category : ${categories}"
+              th:value="${category.getId()}" th:text="${category.getName()}"
+              th:selected="${param.categoryId == category.getId()}">
+      </option>
+    </select>
+
+    <select id="sortBy" name="sortBy">
+      <option th:value="id" th:selected="${param.sortBy == 'id'}">ID</option>
+      <option th:value="name" th:selected="${param.sortBy == 'name'}">Назва</option>
+      <option th:value="cost" th:selected="${param.sortBy == 'cost'}">Ціна</option>
+    </select>
+    <select id="orderBy" name="orderBy">
+      <option th:value="asc" th:selected="${param.orderBy == 'ASC'}">Зростання</option>
+      <option th:value="desc" th:selected="${param.orderBy == 'DESC'}">Спадання</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="minPrice">Ціна від:</label>
+    <input type="number" id="minPrice" name="minPrice" min="10" max="100" value="10"
+           th:value="${param.minPrice}" placeholder="Мінімум"/>
+
+    <label for="maxPrice">до:</label>
+    <input type="number" id="maxPrice" name="maxPrice" min="10" max="100" value="100"
+           th:value="${param.maxPrice}" placeholder="Максимум"/>
+
+    <button type="submit">Пошук</button>
+  </div>
+</form>
+
+<div th:if="${products.isEmpty()}">Продуктів не знайдено...</div>
+
+<ul>
+  <li th:each="product : ${products}">
+    <a th:href="@{/products/{id}(id=${product.getId()})}"
+       th:text=" '['+ (${product.getId()}) +'] [' + (${product.getCategoryName()})+ '] '+
+       (${product.getName()}) +'  ' +(${product.getCost()}) +'$' "></a>
+  </li>
+</ul>
+
+<div class="pagination">
+  <a th:href="@{/products(page=${currentPage - 1})}" th:if="${currentPage > 0}">Попередня</a>
+  <span th:text="${currentPage + 1}"></span> / <span th:text="${totalPages}"></span>
+  <a th:href="@{/products(page=${currentPage + 1})}" th:if="${currentPage + 1 < totalPages}">Наступна</a>
+</div>
+</body>
+</html>

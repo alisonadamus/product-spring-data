@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h1 th:text="${product.getName()}"></h1>
+<div>
+  <img th:src="@{${product.getPhotoPath()}}" alt="Фото продукту" style="max-width: 250px;">
+</div>
+
+<div>
+  <p><strong>ID:</strong> <span th:text="${product.getId()}"></span></p>
+  <p><strong>Категорія:</strong> <span th:text="${product.getCategory().getName()}"></span></p>
+  <p><strong>Ціна:</strong> <span th:text="${product.getCost()}"></span>$</p>
+  <p><strong>Опис:</strong> <span th:text="${product.getDescription()}"></span></p>
+</div>
+
+<a th:href="@{/products}">Назад до списку</a>
+</body>
+</html>
