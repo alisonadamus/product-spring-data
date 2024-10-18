@@ -1,6 +1,5 @@
 package com.alisonadamus.product_spring_data;
 
-import com.alisonadamus.product_spring_data.repositories.ProductRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

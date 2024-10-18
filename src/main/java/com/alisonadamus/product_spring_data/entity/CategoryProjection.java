@@ -1,4 +1,4 @@
-package com.alisonadamus.product_spring_data.entities;
+package com.alisonadamus.product_spring_data.entity;
 
 public interface CategoryProjection {
 

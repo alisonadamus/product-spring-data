@@ -1,7 +1,7 @@
-package com.alisonadamus.product_spring_data.repositories;
+package com.alisonadamus.product_spring_data.repository;
 
-import com.alisonadamus.product_spring_data.entities.Category;
-import com.alisonadamus.product_spring_data.entities.CategoryProjection;
+import com.alisonadamus.product_spring_data.entity.Category;
+import com.alisonadamus.product_spring_data.entity.CategoryProjection;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;

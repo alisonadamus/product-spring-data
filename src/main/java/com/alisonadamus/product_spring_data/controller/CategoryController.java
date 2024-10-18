@@ -1,10 +1,7 @@
-package com.alisonadamus.product_spring_data.controllers;
+package com.alisonadamus.product_spring_data.controller;
 
-import com.alisonadamus.product_spring_data.entities.Category;
-import com.alisonadamus.product_spring_data.entities.ProductProjectionForList;
-import com.alisonadamus.product_spring_data.services.CategoryService;
-import java.math.BigDecimal;
-import java.util.List;
+import com.alisonadamus.product_spring_data.entity.Category;
+import com.alisonadamus.product_spring_data.service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

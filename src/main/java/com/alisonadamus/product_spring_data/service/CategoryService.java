@@ -1,9 +1,10 @@
-package com.alisonadamus.product_spring_data.services;
+package com.alisonadamus.product_spring_data.service;
 
-import com.alisonadamus.product_spring_data.entities.Category;
-import com.alisonadamus.product_spring_data.entities.CategoryProjection;
-import com.alisonadamus.product_spring_data.repositories.CategoryRepository;
+import com.alisonadamus.product_spring_data.entity.Category;
+import com.alisonadamus.product_spring_data.entity.CategoryProjection;
+import com.alisonadamus.product_spring_data.repository.CategoryRepository;
 import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +30,22 @@ public class CategoryService {
 
     public List<CategoryProjection> findAllForSelection() {
         return categoryRepository.findAllForSelection();
+    }
+
+    public Optional<Category> findOptionalById(Long id) {
+        return categoryRepository.findById(id);
+    }
+
+    public Category findById(Long id) {
+        return categoryRepository.findById(id).orElse(null);
+    }
+
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
+
+    public void deleteById(Long id) {
+        categoryRepository.deleteById(id);
     }
 
 }

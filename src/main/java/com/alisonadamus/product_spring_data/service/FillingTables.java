@@ -1,9 +1,9 @@
-package com.alisonadamus.product_spring_data.services;
+package com.alisonadamus.product_spring_data.service;
 
-import com.alisonadamus.product_spring_data.entities.Category;
-import com.alisonadamus.product_spring_data.entities.Product;
-import com.alisonadamus.product_spring_data.repositories.CategoryRepository;
-import com.alisonadamus.product_spring_data.repositories.ProductRepository;
+import com.alisonadamus.product_spring_data.entity.Category;
+import com.alisonadamus.product_spring_data.entity.Product;
+import com.alisonadamus.product_spring_data.repository.CategoryRepository;
+import com.alisonadamus.product_spring_data.repository.ProductRepository;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
